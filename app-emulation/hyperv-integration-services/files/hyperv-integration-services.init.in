@@ -1,0 +1,7 @@
+#!/sbin/openrc-run
+command="/usr/sbin/hv_@daemon@_daemon"
+description="Hyper-V @daemon@ Daemon"
+
+depend() {
+	need localmount
+}

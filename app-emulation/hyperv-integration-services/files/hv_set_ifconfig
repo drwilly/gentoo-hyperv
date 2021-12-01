@@ -1,0 +1,11 @@
+#!/bin/sh
+# SPDX-License-Identifier: GPL-2.0
+#
+# This script activates an interface based on the specified
+# configuration.
+#
+# The only argument to this script is the configuration file that is to
+# be used to configure the interface.
+#
+# Currently a no-op.
+#

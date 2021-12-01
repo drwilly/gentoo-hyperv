@@ -1,0 +1,18 @@
+#!/bin/sh
+# SPDX-License-Identifier: GPL-2.0
+#
+# Input: Name of the interface
+#
+# Output: The script prints the string "Enabled" to stdout to indicate
+#	that DHCP is enabled on the interface. If DHCP is not enabled,
+#	the script prints the string "Disabled" to stdout.
+
+dhcpcd_has_lease() {
+	: ${1?}
+	test -e /var/lib/dhcpcd/"$1".lease || test -e /var/lib/dhcpcd/"$1".lease6
+}
+
+if dhcpcd_has_lease "$1"
+then echo "Enabled"
+else echo "Disabled"
+fi

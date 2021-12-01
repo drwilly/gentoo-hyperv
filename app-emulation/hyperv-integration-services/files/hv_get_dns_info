@@ -1,0 +1,7 @@
+#!/bin/sh
+# SPDX-License-Identifier: GPL-2.0
+#
+# This script is expected to print the nameserver values to stdout.
+#
+
+cat /etc/resolv.conf 2>/dev/null | awk '/^nameserver/ { print $2 }'
