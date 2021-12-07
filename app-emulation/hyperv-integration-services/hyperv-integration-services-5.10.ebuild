@@ -21,10 +21,10 @@ S="${WORKDIR}/linux-${PV}/tools/hv/"
 
 src_install() {
 	emake DESTDIR="${D}" install
-	rmdir -p --ignore-fail-on-non-empty "${D}"/var/lib/
+	keepdir /var/lib/hyperv
 
 	for daemon in kvp vss fcopy; do
-		sed -e "s:@daemon@:$daemon:g" "${FILESDIR}/${PN}.init.in" >"hv_${daemon}_daemon" || die
+		sed -e "s:@daemon@:${daemon}:g" "${FILESDIR}/${PN}.init.in" >"hv_${daemon}_daemon" || die
 		doinitd "hv_${daemon}_daemon"
 	done
 }
