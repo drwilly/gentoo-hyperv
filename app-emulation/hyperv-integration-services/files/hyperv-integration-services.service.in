@@ -3,8 +3,7 @@ Description=Hyper-V @daemon@ Daemon
 ConditionVirtualization=microsoft
 
 [Service]
-Type=forking
-ExecStart=/usr/sbin/hv_@daemon@_daemon
+ExecStart=/usr/sbin/hv_@daemon@_daemon --no-daemon
 
 [Install]
 WantedBy=multi-user.target
