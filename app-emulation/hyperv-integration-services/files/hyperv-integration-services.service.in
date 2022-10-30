@@ -1,12 +1,10 @@
-# start the hv_vss_daemon
-#
 [Unit]
-Description=Hyper-V VSS Protocol Daemon
+Description=Hyper-V @daemon@ Daemon
 ConditionVirtualization=microsoft
 
 [Service]
 Type=forking
-ExecStart=/usr/sbin/hv_vss_daemon
+ExecStart=/usr/sbin/hv_@daemon@_daemon
 
 [Install]
 WantedBy=multi-user.target

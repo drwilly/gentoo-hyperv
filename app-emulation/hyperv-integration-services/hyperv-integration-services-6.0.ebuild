@@ -29,9 +29,10 @@ src_install() {
 	doexe "${FILESDIR}/hv_get_dhcp_info" "${FILESDIR}/hv_get_dns_info" "${FILESDIR}/hv_set_ifconfig"
 
 	for daemon in kvp vss fcopy; do
-		sed -e "s:@daemon@:${daemon}:g" "${FILESDIR}/${PN}.init.in" >"hv_${daemon}_daemon" || die
+		sed -e "s:@daemon@:${daemon}:g" "${FILESDIR}/${PN}.initd.in" >"hv_${daemon}_daemon" || die
 		doinitd "hv_${daemon}_daemon"
-		systemd_newunit "${FILESDIR}"/"hv-${daemon}-daemon".service "hv-${daemon}-daemon".service
-	done
 
+		sed -e "s:@daemon@:${daemon}:g" "${FILESDIR}/${PN}.service.in" >"hv-${daemon}-daemon.service" || die
+		systemd_dounit "hv-${daemon}-daemon.service"
+	done
 }
