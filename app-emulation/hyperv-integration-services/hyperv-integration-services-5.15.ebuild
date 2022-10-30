@@ -6,7 +6,7 @@ EAPI=8
 DESCRIPTION="Hyper-V Integration Services"
 HOMEPAGE="http://www.kernel.org"
 
-SRC_URI="http://www.kernel.org/pub/linux/kernel/v5.x/linux-${PV}.tar.xz"
+SRC_URI="http://www.kernel.org/pub/linux/kernel/v$(ver_cut 1).x/linux-${PV}.tar.xz"
 KEYWORDS="amd64"
 
 LICENSE="GPL-2.0"
